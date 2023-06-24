@@ -1,3 +1,13 @@
+variable "environment" {
+  type        = string
+  description = "Current execution environment"
+  
+  validation {
+    condition     = contains(["dev", "hom", "prod"], var.environment)
+    error_message = "Invalid environment. Must be on of the followin: `dev`, `hom` or `prod`"
+  }
+}
+
 variable "name" {
   type        = string
   description = "Glue job name"
@@ -20,4 +30,9 @@ variable "command" {
     python_version  = number
   })
   description = "The command of the job."
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "Key-value mapping of resource tags"
 }
