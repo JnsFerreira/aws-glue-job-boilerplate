@@ -32,7 +32,14 @@ variable "command" {
   description = "The command of the job."
 }
 
+variable "schedule_expression" {
+  type        = string
+  description = "Cron expression to schedule Glue Jobs"
+  default     = "cron(0 0 * * ? *)"
+}
+
 variable "tags" {
   type        = map(string)
   description = "Key-value mapping of resource tags"
 }
+
